@@ -1,31 +1,48 @@
 $(document).ready(function(){
-    // console.log("hello")
+    // categories for preset buttons 
+    var categories = [
+        'coding', 'robots', 'anime'
+    ]
+
+    // create for loop to create buttons and append
+    for (var i = 0; i <categories.length; i++) {
+        var setBtns = $("<button class='gifBtn' value='" + categories[i] + "' data-name='" + categories[i] + "'>" + categories[i] + "</button>")
+        $(".gifBtns").append(setBtns)
+    }
     
-    
+    //click function for inputting new categories
     $("#select-gif").on("click", function(){
+        //value of whatever user input
         var input = $("#gif-input").val()
-        $(".gifBtns").append($("<button class='gifBtn' value='"+input+"' data-name='"+input+"'>"+input+"</button>"))
-        //add on click event for gifBtns/ add value
+        //add new button 
+        var newBtn = $("<button class='gifBtn' value='" + input + "' data-name='" + input + "'>" + input + "</button>")
+        $(".gifBtns").append(newBtn)
+
+        //my unique API key
         var APIKey = "y5KIXr4zxOUPpyUsmrtlZQejlJGkK563"
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + APIKey + "&q=" + input + "&limit=24&offset=0&rating=R&lang=en"
-        console.log(input)
+
         event.preventDefault()
+
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function(response) {
             //run through data array
             var dataArr = response.data
-            for (var i = 0; i <= response.data.length; i++) {
-                // console.log(response.data)
-                // console.log(dataArr[1])
-                // console.log(response.data[i].images.downsized.url)
-                // console.log(response.data.images)
-                var gifUrl = response.data[i].images.downsized.url
+            for (var i = 0; i <= dataArr.length; i++) {
+                var gifImage = dataArr[i].images.original_still.url
+                var gifUrl = dataArr[i].images.original.url
                 var gifs = $(".gifImages")
-                gifs.prepend("<a href = '" + gifUrl + "' target = '_blank'><img class='gif-images' src='" + gifUrl + "'></a>")
-                $("#gif-input").empty()
-                
+                var gifThumb = $("<img class='gif-ind' value='" + i + "' src='" + gifImage + "' data-hover='" + gifUrl + "' data-off='" + gifImage + "'>")
+                var rating = dataArr[i].rating
+
+                gifs.prepend(gifThumb)     
+                gifThumb.mouseover(function(){
+                    $(this).attr('src', $(this).data("hover"))
+                }).mouseout(function(){
+                    $(this).attr('src', $(this).data("off"))
+                })
             }
         })
     })
