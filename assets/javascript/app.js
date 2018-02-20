@@ -4,6 +4,8 @@ $(document).ready(function(){
     
     $("#select-gif").on("click", function(){
         var input = $("#gif-input").val()
+        $(".gifBtns").append($("<button class='gifBtn' value='"+input+"' data-name='"+input+"'>"+input+"</button>"))
+        //add on click event for gifBtns/ add value
         var APIKey = "y5KIXr4zxOUPpyUsmrtlZQejlJGkK563"
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + APIKey + "&q=" + input + "&limit=24&offset=0&rating=R&lang=en"
         console.log(input)
