@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Get a Git</title>
+    <title>Get-a-GIF</title>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md">
-                <form id="artist-form">
-
-                    <!-- Label for Text Box -->
-                    <label for="artist-input">Search for Gifs!</label>
-                            
+            <div class="jumbotron">
+                <h1>GET-a-GIF</h1>
+                <form id="search-form">
                     <!-- Text Input Box -->
-                    <input type="text" id="gif-input"><br>
-                            
+                    <input type="text" id="gif-input" onfocus="this.value=''" placeholder="Search for a gif!"><br>     
                     <!-- Submit Button -->
                     <input id="select-gif" type="submit" value="GO!">
                 </form>
+            </div>
+            <div class="col-md">
                 <div class="gifImages"></div>
             </div>
         </div>
