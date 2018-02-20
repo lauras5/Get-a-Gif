@@ -16,8 +16,6 @@ $(document).ready(function(){
         var input = $("#gif-input").val()
         categories.push(input)
         console.log(categories)
-        $(".gifBtns").append("<button class='gifBtn' value='" + input + "' data-name='" + input + "'>" + input + "</button>")
-
         //add new button 
         // var newBtn = $("<button class='gifBtn' value='" + input + "' data-name='" + input + "'>" + input + "</button>")
         // $(".gifBtns").append(newBtn)
