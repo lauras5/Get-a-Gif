@@ -4,8 +4,14 @@ body {
     background-size: cover;
     text-align: center;
     font-family: 'Barlow';
+    
 }
 
+.container {
+    width: 90%;
+    display: block;
+    margin: auto;
+}
 .jumbotron {
     margin-top: 20px;
     border-radius: 0%;
@@ -57,6 +63,9 @@ body {
     margin: 5px;
 }
 
-p {
-    display: block;
+.bottom-left {
+    position: relative;
+    top: 105px;
+    left: -267px;
+    display: inline-block;
 }
